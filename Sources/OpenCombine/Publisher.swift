@@ -51,12 +51,10 @@ public protocol Publisher {
     /// Use `Never` if this `Publisher` does not publish errors.
     associatedtype Failure: Error
 
-    /// Attaches the specified subscriber to this publisher.
+    /// Attached Subscriber receive Ouptut or Failure through `receive(subscriber:)`implementation.
     ///
-    /// Always call this function instead of `receive(subscriber:)`.
     /// Adopters of `Publisher` must implement `receive(subscriber:)`. The implementation
-    /// of `subscribe(_:)` provided by `Publisher` calls through to
-    /// `receive(subscriber:)`.
+    /// of `subscribe(_:)` provided by `Publisher` calls through to `receive(subscriber:)`.
     ///
     /// - Parameter subscriber: The subscriber to attach to this publisher. After
     ///   attaching, the subscriber can start to receive values.
@@ -68,10 +66,7 @@ extension Publisher {
 
     /// Attaches the specified subscriber to this publisher.
     ///
-    /// Always call this function instead of `receive(subscriber:)`.
-    /// Adopters of `Publisher` must implement `receive(subscriber:)`.
-    /// The implementation of `subscribe(_:)` in this extension calls through to
-    /// `receive(subscriber:)`.
+    /// The implementation of `subscribe(_:)` in this extension calls `receive(subscriber:)`.
     /// - SeeAlso: `receive(subscriber:)`
     /// - Parameters:
     ///     - subscriber: The subscriber to attach to this `Publisher`. After attaching,
